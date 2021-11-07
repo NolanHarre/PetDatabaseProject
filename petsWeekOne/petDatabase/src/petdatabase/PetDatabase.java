@@ -15,6 +15,7 @@ public class PetDatabase {
         Scanner scan = new Scanner(System.in);
         ArrayList<Pet> pets = new ArrayList<>();
         ArrayList<Pet> results = new ArrayList<>();
+        int identifier;
         Pet pet = new Pet();
         String choice = "0";
         System.out.print("Pet Database Program.\n\n");
@@ -43,12 +44,18 @@ public class PetDatabase {
                     
                 //update a pet
                 case "3":
-                    
+                    pet.displayPets(pets);
+                    System.out.print("Enter the ID of the pet you would like to update: ");
+                    identifier = scan.nextInt();
+                    pet.updatePet(pets, identifier);
                     break;
                     
                 //remove pet
                 case "4":
-                    
+                    pet.displayPets(pets);
+                    System.out.print("Enter the ID to remove: ");
+                    identifier = scan.nextInt();
+                    pet.removePet(pets, identifier);
                     break;
                     
                 //search by name
@@ -74,7 +81,6 @@ public class PetDatabase {
                     System.out.print("Please pick a number between 1 and 7\n\n");
                     break;
             }
-            
         }
     }
     

@@ -129,4 +129,36 @@ public class Pet {
         //output results
         return results;
     }
+    
+    public ArrayList<Pet> removePet(ArrayList<Pet> pets, int p){
+        //remove pet
+        Pet pet = new Pet();
+        pet = pets.get(p - 1);
+        pets.remove(pet);
+        
+        //print removal message
+        System.out.print(pet.getName() + " " + pet.getAge() + " is removed.\n\n");
+        
+        //reset ids
+        for(int i = 0; i < pets.size(); i++){
+            pet = pets.get(i);
+            pet.setID(i + 1);
+        }
+        
+        return pets;
+    }
+    
+    public ArrayList<Pet> updatePet(ArrayList<Pet> pets, int p){
+        Scanner scan = new Scanner(System.in);
+        Pet pet = pets.get(p-1);
+        String oldName = pet.getName();
+        int oldAge = pet.getAge();
+        System.out.print("\nEnter a new name and a new age: ");
+        pet.setName(scan.next());
+        pet.setAge(scan.nextInt());
+        
+        System.out.print(oldName + " " + oldAge + " has been changed to " + pet.getName() + " " + pet.getAge() + "\n\n");
+        
+        return pets;
+    }
 }
