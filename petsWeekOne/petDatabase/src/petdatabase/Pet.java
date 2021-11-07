@@ -87,4 +87,46 @@ public class Pet {
          
         return pets;
     }
+    
+    public ArrayList<Pet> searchPetsName(ArrayList<Pet> pets){
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Pet> results = new ArrayList<>();
+        String tempName;
+        
+        //get search name
+        System.out.print("Enter a name to search: ");
+        String searchName = scan.next();
+        
+        //search through database
+        for(int i = 0; i < pets.size(); i++){
+            tempName = pets.get(i).getName();
+            
+            if(tempName.equalsIgnoreCase(searchName)){
+                results.add(pets.get(i));
+            }
+        }
+        //output results
+        return results;
+    }
+    
+    public ArrayList<Pet> searchPetAge(ArrayList<Pet> pets){
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Pet> results = new ArrayList<>();
+        int tempAge;
+        
+        //get search name
+        System.out.print("Enter an age to search: ");
+        int searchAge = scan.nextInt();
+        
+        //search through database
+        for(int i = 0; i < pets.size(); i++){
+            tempAge = pets.get(i).getAge();
+            
+            if(tempAge == searchAge){
+                results.add(pets.get(i));
+            }
+        }
+        //output results
+        return results;
+    }
 }

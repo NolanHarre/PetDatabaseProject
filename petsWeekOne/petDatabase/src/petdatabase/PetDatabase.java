@@ -14,6 +14,7 @@ public class PetDatabase {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         ArrayList<Pet> pets = new ArrayList<>();
+        ArrayList<Pet> results = new ArrayList<>();
         Pet pet = new Pet();
         String choice = "0";
         System.out.print("Pet Database Program.\n\n");
@@ -52,12 +53,16 @@ public class PetDatabase {
                     
                 //search by name
                 case "5":
+                    results = pet.searchPetsName(pets);
                     
+                    pet.displayPets(results);
                     break;
                     
                 //search by age    
                 case "6":
+                    results = pet.searchPetAge(pets);
                     
+                    pet.displayPets(results);
                     break;
                     
                 //exit  
