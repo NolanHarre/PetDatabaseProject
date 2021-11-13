@@ -29,7 +29,6 @@ public class PetDatabase {
             while(reader.hasNextLine()){
                 Pet petData = new Pet();
                 String databasePet = reader.nextLine();
-                System.out.print("DEBUG: " + databasePet + " \n");
                 
                 //put data into arraylist
                 petData = pet.getDatabasePet(databasePet);
@@ -43,7 +42,7 @@ public class PetDatabase {
         
         
         while(!"7".equals(choice)){
-            System.out.print("What would you like to do?\n");
+            System.out.print("\nWhat would you like to do?\n");
             printOptions();
             choice = scan.next();
             
