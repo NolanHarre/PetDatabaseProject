@@ -1,3 +1,5 @@
 mandy 4
 gerret 7
 peggy 4
+greg 4
+poppy 3

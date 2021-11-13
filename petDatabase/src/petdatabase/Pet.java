@@ -66,27 +66,47 @@ public class Pet {
         String newName = "";
         int newAge;
         int newID;
-         
-        while(!"done".equals(newName)){
-            Pet newPet = new Pet();
-            System.out.print("add pet (name, age): ");
-            newName = scan.next();
-            if("done".equals(newName)){
-                break;
-            }
-            newAge = scan.nextInt();
-            newID = pets.size() + 1;
-            
-            if(!"done".equals(newName)){
-                newPet.setID(newID);
-                newPet.setName(newName);
-                newPet.setAge(newAge);
-                pets.add(newPet);
-                count++;
-            }
+        
+        if(pets.size() == 5){
+            System.out.print("\nDatabase is full. No more pets can be added.\n");
         }
-        System.out.print(count + " pet(s) added\n");
-         
+        
+        while(pets.size()< 5){
+            while(!"done".equals(newName)){
+                Pet newPet = new Pet();
+                System.out.print("add pet (name, age): ");
+                newName = scan.nextLine();
+                String[] checkName = newName.split(" ");
+                while(checkName.length > 2){
+                    System.out.print("Please enter a name and and an age in the correct fashion: ");
+                    newName = scan.nextLine();
+                    checkName = newName.split(" ");
+                }
+                if("done".equals(newName)){
+                    break;
+                }
+                newName = checkName[0];
+                newAge = Integer.parseInt(checkName[1]);
+                while(newAge > 20){
+                    System.out.print("The age you have entered is invalid. Please enter a number between 1 and 20: ");
+                    newAge = scan.nextInt();
+                }
+                newID = pets.size() + 1;
+            
+                if(!"done".equals(newName)){
+                    newPet.setID(newID);
+                    newPet.setName(newName);
+                    newPet.setAge(newAge);
+                    pets.add(newPet);
+                    count++;
+                }
+                if(pets.size() == 5){
+                    System.out.print("\nDatabase is full. No more pets can be added.\n");
+                    break;
+                }
+            }
+            System.out.print(count + " pet(s) added\n");
+        } 
         return pets;
     }
     
